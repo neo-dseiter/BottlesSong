@@ -3,50 +3,45 @@ package com.bottles;
 public class Bottles {
 
     public String singVerse(int i) {
-        return onTheWallVerse(i)  + ", " + getNumberAndContainer(i) + " of Beer\n";
+        return numberContainerAndBeverage(i)  + onTheWall() + ", " + numberContainerAndBeverage(i) +"\n";
+    }
+
+    private static String onTheWall() {
+        return " on the Wall";
     }
 
     private static String getNumberAndContainer(int i) {
-        String numberAndContainer;
-        switch (i) {
-            case 1:
-                numberAndContainer = i + " " + "Bottle";
-            break;
-            case 0:
-                numberAndContainer = "No More Bottles";
-                break;
-            default:
-                numberAndContainer = i + " " + "Bottles";
-            break;
-        }
-        return numberAndContainer;
+        return switch (i) {
+            case 1 -> i + " " + "Bottle";
+            case 0 -> "No More Bottles";
+            default -> i + " " + "Bottles";
+        };
     }
 
-    private String onTheWallVerse(int i) {
-        switch(i){
-            case(-1):
-                return onTheWallVerse(99);
-            default:
-                return getNumberAndContainer(i) + " of Beer on the Wall";
+    private String numberContainerAndBeverage(int i) {
+        if (i == -1) {
+            return numberContainerAndBeverage(99);
         }
+        return getNumberAndContainer(i) + " of Beer";
     }
 
     public String singChorus(int i) {
-        switch(i){
-            case 1:
-                return "Take it down and pass it around, ";
-            case 0:
-                return "Go to the store and buy some more, ";
-            default:
-                return "Take one down and pass it around, ";
-        }
+        return switch (i) {
+            case 1 -> "Take it down and pass it around, ";
+            case 0 -> "Go to the store and buy some more, ";
+            default -> "Take one down and pass it around, ";
+        };
     }
 
     public String singWholeSong() {
-        String song = "";
+        StringBuilder song = new StringBuilder();
         for (int i = 99; i>=0; i--) {
-            song = song + singVerse(i) + singChorus(i) + onTheWallVerse(i-1) + ".\n\n";
+            song.append(singVerse(i))
+                    .append(singChorus(i))
+                    .append(numberContainerAndBeverage(i - 1))
+                    .append(onTheWall())
+                    .append(".\n\n");
         }
-        return song;
+        return song.toString();
     }
 }
