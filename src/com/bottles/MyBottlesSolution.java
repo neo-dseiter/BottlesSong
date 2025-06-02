@@ -1,6 +1,6 @@
 package com.bottles;
 
-public class Bottles {
+public class MyBottlesSolution {
 
     public String singVerse(int i) {
         return numberContainerAndBeverage(i)  + onTheWall() + ", " + numberContainerAndBeverage(i) +"\n";

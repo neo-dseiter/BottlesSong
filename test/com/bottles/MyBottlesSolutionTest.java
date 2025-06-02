@@ -3,8 +3,8 @@ package com.bottles;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-public class BottlesTest {
-    Bottles bottleSong = new Bottles();
+public class MyBottlesSolutionTest {
+    MyBottlesSolution bottleSong = new MyBottlesSolution();
     @Test
     public void testVerse99() {
         assertEquals("99 Bottles of Beer on the Wall, 99 Bottles of Beer\n", bottleSong.singVerse(99));
@@ -36,6 +36,7 @@ public class BottlesTest {
     }
 
     @Test
+    @Tag("slow")
     public void testWholeSong(){
 
         String song = """
