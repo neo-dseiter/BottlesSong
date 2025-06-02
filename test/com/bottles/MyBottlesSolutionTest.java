@@ -36,7 +36,6 @@ public class MyBottlesSolutionTest {
     }
 
     @Test
-    @Tag("slow")
     public void testWholeSong(){
 
         String song = """
