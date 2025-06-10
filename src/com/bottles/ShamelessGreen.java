@@ -1,26 +1,55 @@
 package com.bottles;
 
 public class ShamelessGreen {
-    public String singVerse(int i) {
-        return switch (i) {
-            case 2 -> 2 + " bottles of beer on the wall, " +
-                    2 + " bottles of beer\n" +
-                    "Take one down and pass it around, " +
-                    1 + " bottle of beer on the wall.\n";
-            case 1 -> 1 + " bottle of beer on the wall, " +
-                    1 + " bottle of beer\n" +
-                    "Take it down and pass it around, " +
-                    "no more bottles of beer on the wall.\n";
-            case 0 -> "No more bottles of beer on the wall, " +
-                    "no more bottles of beer\n" +
-                    "Go to the store and buy some more, " +
-                    "99 bottles of beer on the wall.\n";
-            default -> i + " bottles of beer on the wall, " +
-                    i + " bottles of beer\n" +
-                    "Take one down and pass it around, " +
-                    (i - 1) + " bottles of beer on the wall.\n";
-        };
+    public String singVerse(int number) {
+        return capitalize(quantity(number)) + " " + container(number) + " of beer on the wall, " +
+                    quantity(number) + " " + container(number) + " of beer\n" +
+                    action(number) + ", " +
+                    quantity(successor(number)) + " " + container(successor(number)) + " of beer on the wall.\n";
     }
+
+    private int successor(int number){
+        if(number == 0){
+            return 99;
+        }
+        return number-1;
+    }
+
+    public String action(int number){
+        if (number == 0){
+            return "Go to the store and buy some more";
+        }
+        return "Take " + pronoun(number) + " down and pass it around";
+    }
+
+    public static String capitalize(String str) {
+        if (str == null || str.isEmpty()) {
+            return str;
+        }
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+
+    private String quantity(int number){
+        if(number == 0){
+            return "no more";
+        }
+        return Integer.toString(number);
+    }
+
+    private String pronoun(int number){
+        if(number == 1){
+            return "it";
+        }
+        return "one";
+    }
+
+    private String container(int number) {
+        if(number == 1){
+            return "bottle";
+        }
+        return "bottles";
+    }
+
 
     public String verses(int start, int finish) {
         StringBuilder verses = new StringBuilder();
