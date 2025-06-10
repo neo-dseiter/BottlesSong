@@ -1,7 +1,7 @@
 package com.bottles;
 
-public class ShamelessGreen {
-    public String singVerse(int number) {
+public class Bottles {
+    public String verse(int number) {
         return capitalize(quantity(number)) + " " + container(number) + " of beer on the wall, " +
                     quantity(number) + " " + container(number) + " of beer\n" +
                     action(number) + ", " +
@@ -54,7 +54,7 @@ public class ShamelessGreen {
     public String verses(int start, int finish) {
         StringBuilder verses = new StringBuilder();
         for(int i = start; i >= finish; i--){
-            verses.append(singVerse(i));
+            verses.append(verse(i));
             if(i != finish) {
                 verses.append("\n");
             }

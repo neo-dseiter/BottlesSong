@@ -4,15 +4,15 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class ShamelessGreenTest {
-    private ShamelessGreen bottleSong = new ShamelessGreen();
+public class BottlesTest {
+    private Bottles bottleSong = new Bottles();
     @Test
     public void testTheFirstVerse(){
         String expected = "99 bottles of beer on the wall, " +
                 "99 bottles of beer\n" +
                 "Take one down and pass it around, " +
                 "98 bottles of beer on the wall.\n";
-        assertEquals(expected, bottleSong.singVerse(99));
+        assertEquals(expected, bottleSong.verse(99));
     }
 
     @Test
@@ -21,7 +21,7 @@ public class ShamelessGreenTest {
                 "3 bottles of beer\n" +
                 "Take one down and pass it around, " +
                 "2 bottles of beer on the wall.\n";
-        assertEquals(expected, bottleSong.singVerse(3));
+        assertEquals(expected, bottleSong.verse(3));
     }
 
     @Test
@@ -30,7 +30,7 @@ public class ShamelessGreenTest {
                 "2 bottles of beer\n" +
                 "Take one down and pass it around, " +
                 "1 bottle of beer on the wall.\n";
-        assertEquals(expected, bottleSong.singVerse(2));
+        assertEquals(expected, bottleSong.verse(2));
     }
 
     @Test
@@ -39,7 +39,7 @@ public class ShamelessGreenTest {
                 "1 bottle of beer\n" +
                 "Take it down and pass it around, " +
                 "no more bottles of beer on the wall.\n";
-        assertEquals(expected, bottleSong.singVerse(1));
+        assertEquals(expected, bottleSong.verse(1));
     }
 
     @Test
@@ -48,7 +48,7 @@ public class ShamelessGreenTest {
                 "no more bottles of beer\n" +
                 "Go to the store and buy some more, " +
                 "99 bottles of beer on the wall.\n";
-        assertEquals(expected, bottleSong.singVerse(0));
+        assertEquals(expected, bottleSong.verse(0));
     }
 
     @Test
